@@ -59,27 +59,21 @@ create table collection_info (
 ![скриншот](img/1.jpg)
 Диаграмма связей таблиц БД:
 ![скриншот](img/2.jpg)
-## Задание 1
+## Задание 2
 Для создания базы данных сотрудников были использованы команды:
 ```sh
-create table employees (
-	id serial primary key,
-	employee_name varchar(40) not null,
-	post varchar(40) not null
+CREATE TABLE employees (
+	id SERIAL PRIMARY KEY,
+	employee_name VARCHAR(40) NOT NULL,
+	post VARCHAR(40) NOT NULL, 
+	department VARCHAR(40) NOT NULL
 );
 
-create table departments (
-	id serial primary key,
-	dep_name varchar(40) not null,
-	manager_id integer not null references employees(id)
-);
+ALTER TABLE employees 
+	ADD COLUMN manager_id INTEGER REFERENCES employees(id);
 
-create table departament_info (
-	employee_id integer not null primary key references employees(id),
-	department_id integer not null references departments(id)
-);
 ```
 Результат создания таблиц:
-![скриншот](img/3.jpg)
+![скриншот](img/2.1.jpg)
 Диаграмма связей таблиц БД:
-![скриншот](img/4.jpg)
+![скриншот](img/2.2.jpg)
